@@ -11,11 +11,19 @@ class Vector3D:
         return f"{self.__class__.__name__}({self.x},{self.y},{self.z})"
 
     def __add__(self,other):
-        return Vector3D(self.x + other.x,self.y + other.y,self.z + other.z)
+        if isinstance(other,(int, float)):
+            return Vector3D(self.x + other, self.y + other, self.z = other)
+        elif isinstance(other, Vector3D):
+            return Vector3D(self.x + other.x, self.y + other.y, self.z + other.z)
+        else:
+            #raise TypeError(f"Cannot add Vector 3D to ...")
 
     def __eq__(self,other):
         """Return True if self == other, otherwise return False"""
         return self.x == other.x and self.y == other.y and self.z == other.z
+
+    def dot(self, other):
+        return self.x * other.x + self.y * other.y + self.z * other.z
 
 if __name__ == "__main__":
     v = Vector3D(1,4,2)
