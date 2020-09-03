@@ -12,6 +12,7 @@ def test_vector_repr():
 def test_vector_add():
     v = Vector3D(1,2,3)
     u = Vector3D(1,1,1)
+    w = u + v
     assert w.x == 2
     assert w.y == 3
     assert w.z == 4
