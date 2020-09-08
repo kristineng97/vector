@@ -30,12 +30,48 @@ class Vector3D:
     def dot(self, other):
         return self.x * other.x + self.y * other.y + self.z * other.z
 
+    def __mul__(self, other):
+        """ The det dot product between this vector
+        an another vector
+
+        .. math:
+
+            \cdot v = u_1 v_1 + u_2 v_2 + u_3 v_3
+
+        Parameters
+        __________
+        other: Vector3D
+            The vector to be dotted with
+
+        Returns
+        _______
+        float
+            The dot product
+        """
+        return self.dot(other)
+
+    def cross(self, other):
+        """Take the cross product between this vector
+        and the other vector
+
+        Parameters
+        __________
+        other: Vector3D
+            The ector to be crossed with
+
+        Returns
+        _______
+        Vector3D
+            The cross product
+        """
+        return Vector3D(self.y * other.z - self.z * other.y,
+        self.z *other.x - self.x * other.z,
+        self.x * other.y - self.y * other.x)
+
+
 
 if __name__ == "__main__":
     v = Vector3D(1, 4, 2)
     u = Vector3D(1, 1, 1)
     w = u + v
-    w == Vector3D(
-        2,
-        5,
-    )
+    w == Vector3D(2, 5, 3)

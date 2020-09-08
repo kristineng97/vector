@@ -32,6 +32,19 @@ def test_vector_add_integer():
 def test_vector_dot_product():
     u = Vector3D(1,2,3)
     v = Vector3D(1,1,1)
+    w = u * v
+    assert isinstance(w, (int, float))
+    assert abs(w - 6) < 1e-12
+
+def test_vector_dot_product_mul():
+    u = Vector3D(1,2,3)
+    v = Vector3D(1,1,1)
     w = u.dot(v)
     assert isinstance(w, (int, float))
     assert abs(w - 6) < 1e-12
+
+def test_vector_cross_product():
+    u = Vector3D(1,0,0)
+    v = Vector3D(0,1,0)
+    w = u.cross(v)
+    assert w == Vector3D(0, 0, 1)
